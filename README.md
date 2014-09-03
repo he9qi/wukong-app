@@ -1,8 +1,70 @@
 # Wukong-app
 
-This README outlines the details of collaborating on this Ember application.
+npm install --save-dev liquid-fire
+npm install --save-dev ember-cli-cordova
+npm install --save-dev broccoli-emblem-compiler
+npm install --save-dev broccoli-sass
+npm install --save-dev ember-cli-coffeescript  
+npm install --save-dev liquid-fire
 
-A short introduction of this app could easily go here.
+
+# ember cli cordova
+[ember-cli-cordova](https://github.com/poetic/ember-cli-cordova)
+Then you need to initialize the cordova part. Mobile app's require a com
+identifier/reverse style domain so we need to specify it here:
+
+```sh
+ember generate cordova-init com.reverse.domain
+```
+
+This will generate a base cordova iOS app and store it within the `cordova/`
+directory. If you would like to add other platforms, you can run the
+`ember cordova` command:
+
+```sh
+ember cordova platform add android
+```
+
+You must have [cordova](https://www.npmjs.org/package/cordova) installed
+globally for this command to work.
+
+# Usage
+
+## Blueprints
++ `ember g cordova-init com.reverse.domain platform:android` Required generator
+  that sets up the cordova project with a few tweaks to the ember app
++ `ember g cordova-starter-kit` Adds some packages and files that makes up the
+  base setup for projects I develop.
+
+## Commands
++ `ember cordova:open` open xcode project
++ `ember cordova:build --environment production --platform ios` build cordova project
++ `ember cordova:archive 0.0.2 --environment staging --commit --tag` archive ios project with xcode
++ `ember cordova:prepare` needs to be run after cloning a project
++ `ember cordova` Passes commands(plugin(s), platform(s), run, emulate) and arguments to the cordova command
++ `ember help` ember cli help with a section for addon provided commands as well
+
+
+# assets compilation
+app.import('bower_components/bootstrap/dist/css/bootstrap.css');
+app.import('bower_components/bootstrap/dist/css/bootstrap.css.map', {
+  destDir: 'assets'
+});
+
+app.import('bower_components/font-awesome/css/font-awesome.css');
+app.import('bower_components/font-awesome/fonts/fontawesome-webfont.ttf', {
+  destDir: 'fonts'
+});
+app.import('bower_components/font-awesome/fonts/fontawesome-webfont.woff', {
+  destDir: 'fonts'
+});
+
+
+# load app initializers. this is needed for transitions.js to work
+loadInitializers(App, "wukong-app")
+
+
+
 
 ## Prerequisites
 
@@ -48,4 +110,3 @@ Specify what it takes to deploy your app.
 * Development Browser Extensions
   * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
   * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
-

@@ -1,0 +1,19 @@
+ul.listings
+  li
+    = link-to "listings.show" 1
+      ' listing 1
+  li
+    = link-to "listings.show" 1
+      ' listing 1
+  li
+    = link-to "listings.show" 1
+      ' listing 1
+  li
+    = link-to "listings.show" 1
+      ' listing 1
+  li
+    = link-to "listings.show" 1
+      ' listing 1
+  li
+    = link-to "listings.show" 1
+      ' listing 1

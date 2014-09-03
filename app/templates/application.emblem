@@ -1,0 +1,11 @@
+.navbar.navbar-default.navbar-fixed-top role="navigation"
+  .container-fluid.text-center
+      .navbar-header
+        button.navbar-toggle type="button" data-toggle="collapse" data-target="#listings-navbar-collapse"
+          span.sr-only T
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        link-to "listings" class='navbar-brand'
+          ' Listings
+== outlet

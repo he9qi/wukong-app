@@ -1,0 +1,7 @@
+h3 show
+
+p Liquid Fire Animations & Transitions for Ember Apps
+
+p Liquid Fire is a toolkit for managing animated transitions in an Ember application. Like Ember itself, our goal is to cultivate shared abstractions so we're free to focus on bigger and better ideas. Good defaults. Convention over configuration. Composable pieces all the way down.
+
+button{action 'back'} back
