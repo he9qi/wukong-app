@@ -1,42 +1,35 @@
 # Wukong-app
-
+ 
+```sh
+# ember animation
 npm install --save-dev liquid-fire
+
+# cordova mobile app convert
 npm install --save-dev ember-cli-cordova
+
+# emblemjs compiler
 npm install --save-dev broccoli-emblem-compiler
+
+# enable sass
 npm install --save-dev broccoli-sass
+
+# enable coffeescript
 npm install --save-dev ember-cli-coffeescript  
-npm install --save-dev liquid-fire
 
+# bootstrap
+bower install --save-dev bootstrap 
 
-# ember cli cordova
-[ember-cli-cordova](https://github.com/poetic/ember-cli-cordova)
-Then you need to initialize the cordova part. Mobile app's require a com
-identifier/reverse style domain so we need to specify it here:
+# fontawesome
+bower install --save-dev font-awesome 
 
-```sh
-ember generate cordova-init com.reverse.domain
+# i18n
+bower install cldr ember-i18n --save 
 ```
 
-This will generate a base cordova iOS app and store it within the `cordova/`
-directory. If you would like to add other platforms, you can run the
-`ember cordova` command:
+### ember cli cordova [ember-cli-cordova](https://github.com/poetic/ember-cli-cordova)
 
-```sh
-ember cordova platform add android
-```
-
-You must have [cordova](https://www.npmjs.org/package/cordova) installed
-globally for this command to work.
-
-# Usage
-
-## Blueprints
-+ `ember g cordova-init com.reverse.domain platform:android` Required generator
-  that sets up the cordova project with a few tweaks to the ember app
-+ `ember g cordova-starter-kit` Adds some packages and files that makes up the
-  base setup for projects I develop.
-
-## Commands
++ `ember generate cordova-init com.reverse.domain` initialize the cordova
++ `ember cordova platform add android` add platform
 + `ember cordova:open` open xcode project
 + `ember cordova:build --environment production --platform ios` build cordova project
 + `ember cordova:archive 0.0.2 --environment staging --commit --tag` archive ios project with xcode
@@ -45,7 +38,8 @@ globally for this command to work.
 + `ember help` ember cli help with a section for addon provided commands as well
 
 
-# assets compilation
+### assets compilation
+```Javascript
 app.import('bower_components/bootstrap/dist/css/bootstrap.css');
 app.import('bower_components/bootstrap/dist/css/bootstrap.css.map', {
   destDir: 'assets'
@@ -58,20 +52,13 @@ app.import('bower_components/font-awesome/fonts/fontawesome-webfont.ttf', {
 app.import('bower_components/font-awesome/fonts/fontawesome-webfont.woff', {
   destDir: 'fonts'
 });
+```
 
 
-# load app initializers. this is needed for transitions.js to work
-loadInitializers(App, "wukong-app")
+### i18n
++ `ember generate initializer i18n` use initializer
 
-
-# i18n
-bower install cldr ember-i18n --save
-app.import('vendor/cldr/plurals.js');
-app.import('vendor/ember-i18n/lib/i18n.js');
-
-- use initializer
-`ember generate initializer i18n`
-
+```Coffeescript
 TRANSLATIONS =
   "home": "home"
   "user.edit.title": "Edit User"
@@ -89,7 +76,20 @@ I18nInitializer =
 
 `export default I18nInitializer`
 
-- in helpers (i18n-t.coffee)
+```
+
+in app.coffee
+```Javascript
+//load app initializers. this is needed for transitions.js to work
+loadInitializers(App, "wukong-app")
+
+app.import('vendor/cldr/plurals.js');
+app.import('vendor/ember-i18n/lib/i18n.js');
+```
+
+in helpers (i18n-t.coffee)
+
+```Coffeescript
 `import Ember from "ember";`
 
 I = Ember.Handlebars.makeBoundHelper (property, options) ->
@@ -106,7 +106,7 @@ I = Ember.Handlebars.makeBoundHelper (property, options) ->
   Ember.I18n.t property, params
 
 `export default I`
-
+```
 
 ## Prerequisites
 
