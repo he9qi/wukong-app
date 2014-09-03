@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>WukongApp</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {{BASE_TAG}}
+
+    <link rel="stylesheet" href="assets/vendor.css">
+    <link rel="stylesheet" href="assets/wukong-app.css">
+  </head>
+  <body>
+    <script src="assets/vendor.js"></script>
+    <script src="assets/wukong-app.js"></script>
+    <script>
+      window.WukongAppENV = require('wukong-app/config/environment')['default'];
+      window.EmberENV = window.WukongAppENV.EmberENV;
+      window.WukongApp = require('wukong-app/app')['default'].create(WukongAppENV.APP);
+    </script>
+  </body>
+</html>
