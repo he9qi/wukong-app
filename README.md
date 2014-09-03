@@ -64,6 +64,48 @@ app.import('bower_components/font-awesome/fonts/fontawesome-webfont.woff', {
 loadInitializers(App, "wukong-app")
 
 
+# i18n
+bower install cldr ember-i18n --save
+app.import('vendor/cldr/plurals.js');
+app.import('vendor/ember-i18n/lib/i18n.js');
+
+- use initializer
+`ember generate initializer i18n`
+
+TRANSLATIONS =
+  "home": "home"
+  "user.edit.title": "Edit User"
+  "user.followers.title.one": "One Follower"
+  "user.followers.title.other": "All {{count}} Followers"
+  "button.add_user.title": "Add a user"
+  "button.add_user.text": "Add"
+  "button.add_user.disabled": "Saving..."
+
+I18nInitializer =
+  name: 'i18n'
+
+  initialize: () ->
+    Em.I18n.translations = TRANSLATIONS
+
+`export default I18nInitializer`
+
+- in helpers (i18n-t.coffee)
+`import Ember from "ember";`
+
+I = Ember.Handlebars.makeBoundHelper (property, options) ->
+  params = options.hash
+  self = this
+
+  return null if property is undefined
+
+  # Support variable interpolation for our string
+  Object.keys(params).forEach (key) ->
+    if params[key].length > 0
+      params[key] = Ember.Handlebars.get(self, params[key], options)
+
+  Ember.I18n.t property, params
+
+`export default I`
 
 
 ## Prerequisites

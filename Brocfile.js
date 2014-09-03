@@ -17,6 +17,9 @@ app.import('bower_components/font-awesome/fonts/fontawesome-webfont.woff', {
   destDir: 'fonts'
 });
 
+app.import('vendor/cldr/plurals.js');
+app.import('vendor/ember-i18n/lib/i18n.js');
+
 // Use `app.import` to add additional libraries to the generated
 // output files.
 //

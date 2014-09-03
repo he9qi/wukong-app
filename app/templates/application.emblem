@@ -7,5 +7,5 @@
           span.icon-bar
           span.icon-bar
         link-to "listings" class='navbar-brand'
-          ' Listings
+          i18n-t "home"
 == outlet
